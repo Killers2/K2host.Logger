@@ -10,6 +10,7 @@ using System;
 using System.Data;
 
 using K2host.Data.Classes;
+using K2host.Data.Attributes;
 
 using K2host.Logger.Enums;
 using K2host.Logger.Interfaces;
@@ -24,30 +25,30 @@ namespace K2host.Logger.Classes
         /// <summary>
         /// The audit error type
         /// </summary>
-        [TSQLDataType(SqlDbType.Int)]
+        [ODataType(SqlDbType.Int)]
         public OLogAuditError ErrorType { get; set; }
         
         /// <summary>
         /// The log type
         /// </summary>
-        [TSQLDataType(SqlDbType.Int)]
+        [ODataType(SqlDbType.Int)]
         public OLogEntrieType Type { get; set; }
         /// <summary>
         /// The name of the service
         /// </summary>
-        [TSQLDataType(SqlDbType.NVarChar, 255)]
+        [ODataType(SqlDbType.NVarChar, 255)]
         public string ServiceName { get; set; }
        
         /// <summary>
         /// The error message
         /// </summary>
-        [TSQLDataType(SqlDbType.NVarChar, 4000)]
+        [ODataType(SqlDbType.NVarChar, 4000)]
         public string Message { get; set; }
         
         /// <summary>
         /// The time stamp of the log
         /// </summary>
-        [TSQLDataType(SqlDbType.DateTime)]
+        [ODataType(SqlDbType.DateTime)]
         public DateTime DateTime { get; set; }
         
         /// <summary>
