@@ -11,9 +11,11 @@ using System.Data;
 
 using K2host.Data.Classes;
 using K2host.Data.Attributes;
-
 using K2host.Logger.Enums;
 using K2host.Logger.Interfaces;
+
+using MySql.Data.MySqlClient;
+using Oracle.ManagedDataAccess.Client;
 
 namespace K2host.Logger.Classes
 {
@@ -25,37 +27,37 @@ namespace K2host.Logger.Classes
         /// <summary>
         /// The audit error type
         /// </summary>
-        [ODataType(SqlDbType.Int)]
+        [ODataType(SqlDbType.Int, MySqlDbType.Int32, OracleDbType.Int32)]
         public OLogAuditError ErrorType { get; set; }
-        
+
         /// <summary>
         /// The log type
         /// </summary>
-        [ODataType(SqlDbType.Int)]
+        [ODataType(SqlDbType.Int, MySqlDbType.Int32, OracleDbType.Int32)]
         public OLogEntrieType Type { get; set; }
         /// <summary>
         /// The name of the service
         /// </summary>
-        [ODataType(SqlDbType.NVarChar, 255)]
+        [ODataType(SqlDbType.NVarChar, MySqlDbType.VarString, OracleDbType.Varchar2, 255)]
         public string ServiceName { get; set; }
        
         /// <summary>
         /// The error message
         /// </summary>
-        [ODataType(SqlDbType.NVarChar, 4000)]
+        [ODataType(SqlDbType.NVarChar, MySqlDbType.VarString, OracleDbType.Varchar2, 4000)]
         public string Message { get; set; }
-        
+
         /// <summary>
         /// The time stamp of the log
         /// </summary>
-        [ODataType(SqlDbType.DateTime)]
+        [ODataType(SqlDbType.DateTime, MySqlDbType.DateTime, OracleDbType.TimeStamp)]
         public DateTime DateTime { get; set; }
         
         /// <summary>
         /// The object constructor
         /// </summary>
         public OLogEntrie()
-            : base(string.Empty)
+            : base()
         {
 
         }
@@ -64,23 +66,13 @@ namespace K2host.Logger.Classes
         /// The object constructor
         /// </summary>
         public OLogEntrie(OLogAuditError errorType, OLogEntrieType type, DateTime dateTimeStamp, string serviceName, string massage)
-            : base(string.Empty)
+            : base()
         {
             ErrorType       = errorType;
             DateTime        = dateTimeStamp;
             ServiceName     = serviceName;
             Message         = massage;
             Type            = type;
-        }
-
-        /// <summary>
-        /// The object constructor
-        /// </summary>
-        /// <param name="connectionString"></param>
-        public OLogEntrie(string connectionString)
-            : base(connectionString)
-        {
-
         }
 
     }
