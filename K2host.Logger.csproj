@@ -13,7 +13,7 @@
     <PackageIconUrl />
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>K2host, Logs, Log, Logging, Log Service</PackageTags>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
